@@ -3,7 +3,7 @@
 var router = require('express').Router();
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter');
-var data = require('./data.json');
+var data = require('./.data.json');
 var consumerSecret = data.twitterConsumerSecret;
 var consumerKey = data.twitterConsumerKey;
 

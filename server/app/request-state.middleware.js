@@ -3,7 +3,7 @@
 var router = require('express').Router();
 var session = require('express-session');
 var passport = require('passport');
-var data = require('../auth/data.json');
+var data = require('../auth/.data.json');
 
 var User = require('../api/users/user.model');
 

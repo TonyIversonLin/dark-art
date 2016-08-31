@@ -1,7 +1,7 @@
 'use strict';
 
 var Sequelize = require('sequelize');
-var data = require('./auth/data.json');
+var data = require('./auth/.data.json');
 
 var databaseURI = data.databaseURI;
 

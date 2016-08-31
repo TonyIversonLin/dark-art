@@ -10,6 +10,6 @@ var publicPath = path.join(rootPath, 'public');
 
 router.use(express.static(publicPath));
 
-router.use(express.static(rootPath));
+router.use(express.static(rootPath,{dotfiles: "ignore"}));
 
 module.exports = router;

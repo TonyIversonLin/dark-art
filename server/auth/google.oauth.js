@@ -3,7 +3,7 @@
 var router = require('express').Router();
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var data = require('./data.json');
+var data = require('./.data.json');
 var clientSecret = data.googleClientSecret;
 var clientId = data.googleClientId;
 

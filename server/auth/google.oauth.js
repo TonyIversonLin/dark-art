@@ -3,6 +3,10 @@
 var router = require('express').Router();
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var data = require('./data.json');
+var clientSecret = data.googleClientSecret;
+var clientId = data.googleClientId;
+
 
 var User = require('../api/users/user.model');
 
@@ -17,8 +21,8 @@ router.get('/callback', passport.authenticate('google', {
 
 passport.use(new GoogleStrategy({
   clientID: '238524570915-ivf9lnhm9bsfq13cle5ap8s28d4lmhrp.apps.googleusercontent.com',
-  clientSecret: 'GST6VQnVmhx1YIB1vDXXB3PF',
-  callbackURL: 'http://127.0.0.1:8080/auth/google/callback'
+  clientSecret: clientSecret,
+  callbackURL: clientId
 }, function (token, refreshToken, profile, done) {
   var info = {
     name: profile.displayName,

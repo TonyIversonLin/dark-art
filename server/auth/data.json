@@ -1,0 +1,10 @@
+{
+  "githubClientId": "6070304fd627e594fbb1",
+  "githubClientSecret": "592efd0f785508c3dc0c9376e04605ddd7a6bd76",
+  "googleClientId": "238524570915-ivf9lnhm9bsfq13cle5ap8s28d4lmhrp.apps.googleusercontent.com",
+  "googleClientSecret": "GST6VQnVmhx1YIB1vDXXB3PF",
+  "twitterConsumerKey": "xe86sGm0HUu7qTwnQBq89dX02",
+  "twitterConsumerSecret": "pD1XEQgYppFpztd86H14d8EQWR0627yZRrFMP53DSOuMf4YaoQ",
+  "databaseURI": "postgres://localhost:5432/auther",
+  "sessionSecret": "tongiscool"
+}

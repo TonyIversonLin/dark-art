@@ -4,20 +4,23 @@ var router = require('express').Router();
 var session = require('express-session');
 var passport = require('passport');
 var data = require('../auth/.data.json');
-
+var bodyParser = require('body-parser');
 var User = require('../api/users/user.model');
 
-router.use(function (req, res, next) {
-  var bodyString = '';
-  req.on('data', function (chunk) {
-    bodyString += chunk;
-  });
-  req.on('end', function () {
-    bodyString = bodyString || '{}';
-    req.body = eval('(' + bodyString + ')');
-    next();
-  });
-});
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.json());
+
+// router.use(function (req, res, next) {
+//   var bodyString = '';
+//   req.on('data', function (chunk) {
+//     bodyString += chunk;
+//   });
+//   req.on('end', function () {
+//     bodyString = bodyString || '{}';
+//     req.body = eval('(' + bodyString + ')');
+//     next();
+//   });
+// });
 
 router.use(session({
   secret: data.sessionSecret,

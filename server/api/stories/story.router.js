@@ -17,6 +17,7 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.get('/', function (req, res, next) {
+  console.log(req.session);
   Story.findAll({
     include: [{model: User, as: 'author'}],
     attributes: {exclude: ['paragraphs']}
@@ -47,19 +48,24 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.put('/:id', function (req, res, next) {
+  if(req.session.passport.user === req.story.author_id){
   req.story.update(req.body)
   .then(function (story) {
     res.json(story);
   })
   .catch(next);
+}
 });
 
 router.delete('/:id', function (req, res, next) {
+  console.log(req.story);
+  if(req.session.passport.user === req.story.author_id){
   req.story.destroy()
   .then(function () {
     res.status(204).end();
   })
   .catch(next);
+}
 });
 
 module.exports = router;

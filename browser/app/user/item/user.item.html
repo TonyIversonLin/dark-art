@@ -4,7 +4,7 @@
       ng-if="glyphicon"
       class="glyphicon glyphicon-{{ glyphicon }}"
       ng-click="iconClick()"
-      ng-class="{clickable: hasIconClick}">  
+      ng-class="{clickable: hasIconClick}">
     </span>
     <img
       ng-if="!glyphicon"
@@ -26,14 +26,14 @@
         placeholder="Jean Doe"
         ng-model="user.name"
         ng-model-options="{debounce: 500}"
-        eat-click>  
+        eat-click>
       </span>
       <span
         ng-if="!isForm"
         class="glyphicon glyphicon-certificate"
         ng-class="{toggleable: $root.isAdmin(), transparent: !user.isAdmin}"
         ng-click="$root.isAdmin() && (user.isAdmin = !user.isAdmin)"
-        eat-click>  
+        eat-click>
       </span>
     </h4>
     <h5 class="tucked">
@@ -71,6 +71,7 @@
     </h5>
   </div>
   <div ng-show="$root.isMe(user) || $root.isAdmin()" class="media-right media-middle">
+    <!-- $root.isMe(user) || $root.isAdmin() -->
     <button
       ng-if="!isForm"
       class="btn btn-default"

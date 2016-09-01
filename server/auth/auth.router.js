@@ -4,10 +4,33 @@ var router = require('express').Router();
 
 var HttpError = require('../utils/HttpError');
 var User = require('../api/users/user.model');
+var crypto = require('crypto');
+
+
+
 
 router.post('/login', function (req, res, next) {
   User.findOne({
-    where: req.body
+    attributes: ['salt'],
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(function(salt){
+    console.log('SALT', salt.dataValues.salt);
+    var bytes = 64;
+    var iterations = 1;
+    salt = salt.dataValues.salt;
+    console.log('PASSWORD', req.body.password);
+    var buffer = crypto.pbkdf2Sync(req.body.password, salt, iterations, bytes, 'sha512');
+    console.log('BUFFER', buffer);
+    var hash = buffer.toString('base64');
+    console.log('HASH', hash);
+    return User.findOne({
+      where: {
+        password: hash
+      }
+    });
   })
   .then(function (user) {
     if (!user) throw HttpError(401);
@@ -20,7 +43,14 @@ router.post('/login', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res, next) {
-  User.create(req.body)
+  console.log(req.body.password);
+  var bytes = 64;
+  var salt = crypto.randomBytes(16);
+  var iterations = 1;
+  var buffer = crypto.pbkdf2Sync(req.body.password, salt, iterations, bytes, 'sha512');
+  var hash = buffer.toString('base64');
+
+  User.create({email: req.body.email, password: hash, salt: salt})
   .then(function (user) {
     req.login(user, function (err) {
       if (err) next(err);

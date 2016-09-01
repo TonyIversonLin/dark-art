@@ -16,11 +16,12 @@ var User = db.define('user', {
     allowNull: false,
     unique: true
   },
-  password: Sequelize.STRING,
+  password: Sequelize.TEXT,
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  salt: Sequelize.TEXT,
   googleId: Sequelize.STRING,
   twitterId: Sequelize.STRING,
   githubId: Sequelize.STRING

@@ -53,6 +53,8 @@ router.put('/:id', function (req, res, next) {
     res.json(user);
   })
   .catch(next);
+} else {
+  res.sendStatus(403);
 }
 });
 

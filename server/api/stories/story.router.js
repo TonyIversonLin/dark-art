@@ -60,8 +60,7 @@ router.put('/:id', function (req, res, next) {
 });
 
 router.delete('/:id', function (req, res, next) {
-  console.log(req.story);
-  if(req.session.passport && (req.session.passport.user === req.story.author_id)){
+  if(req.session.passport.user === req.story.author_id){
   req.story.destroy()
   .then(function () {
     res.status(204).end();

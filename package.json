@@ -13,12 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-sanitize": "^1.5.8",
     "angular-ui-router": "^0.3.1",
     "bluebird": "^2.10.2",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "bootstrap-social": "^5.0.0",
     "express": "^4.13.3",
+    "express-sanitized": "^0.5.1",
     "express-session": "^1.11.3",
     "jquery": "^3.1.0",
     "passport": "^0.3.0",
@@ -27,6 +29,7 @@
     "passport-twitter": "^1.0.3",
     "pg": "^4.5.5",
     "sequelize": "^3.23.1",
+    "underscore": "^1.8.3",
     "volleyball": "^1.3.0"
   },
   "devDependencies": {

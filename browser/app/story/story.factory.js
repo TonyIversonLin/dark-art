@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Story', function ($http) {
+app.factory('Story', function ($http, $sanitize) {
   function Story (props) {
     angular.extend(this, props);
   }
@@ -23,6 +23,7 @@ app.factory('Story', function ($http) {
   };
 
   Story.fetchAll = function () {
+    Story.url = $sanitize(Story.url);
     return $http.get(Story.url)
     .then(function (res) {
       return res.data.map(function (obj) {

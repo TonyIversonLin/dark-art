@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('auther', ['ui.router']);
+var app = angular.module('auther', ['ui.router', 'ngSanitize']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);

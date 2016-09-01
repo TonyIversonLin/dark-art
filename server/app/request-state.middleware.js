@@ -6,9 +6,11 @@ var passport = require('passport');
 var data = require('../auth/.data.json');
 var bodyParser = require('body-parser');
 var User = require('../api/users/user.model');
+var expressSanitized = require('express-sanitized');
 
 router.use(bodyParser.urlencoded({extended: false}));
 router.use(bodyParser.json());
+router.use(expressSanitized());
 
 // router.use(function (req, res, next) {
 //   var bodyString = '';
